@@ -1,7 +1,14 @@
 ### Sources
-https://www.youtube.com/watch?v=ETwdg4lvUUM&pp=ygUGUmVhY3Qg
-https://www.youtube.com/watch?v=5CBZ6DymX0Y&t=3691s&pp=ygULVHlwZXNjcmlweSA%3D
-https://www.youtube.com/playlist?list=PLpPqplz6dKxW5ZfERUPoYTtNUNvrEebAR
+[React - kurs podstaw w 2h krok po kroku!](https://www.youtube.com/watch?v=ETwdg4lvUUM&pp=ygUGUmVhY3Qg)
+
+[Typescript - kurs podstaw 🔥 Tutorial krok po kroku!](https://www.youtube.com/watch?v=5CBZ6DymX0Y&t=3691s&pp=ygULVHlwZXNjcmlweSA%3D)
+
+[ReactJS Course For Beginners 2023](https://www.youtube.com/playlist?list=PLpPqplz6dKxW5ZfERUPoYTtNUNvrEebAR)
+
+
+
+
+
 
 
 
@@ -106,7 +113,7 @@ export default App;
 ```
 
 
-###Lesson 2 
+### Lesson 2 
 
 There is possibility of use App.module.css instead of App.css
 We need to:
