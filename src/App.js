@@ -3,19 +3,30 @@ import { useState} from "react";
 
 function App() {
 
-    //Use state declaration
-    const [inputValue,setInputValue] = useState("");
+    const [counter,setCounter] = useState(0);
 
-    const handleInputChange = (event) => {
-
-        setInputValue(event.target.value);
-    }
 
     return (
        <div className="App">
-           <input type="text" onChange={handleInputChange} />
+        <div style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
+            <button onClick={
+                ()=>{
+                    setCounter(counter + 1);
+                }
+            }>Increase</button>
+            <button onClick={
+                ()=>{
+                    setCounter(counter - 1);
+                }
+            }>Decrease</button>
+            <button onClick={
+                ()=>{
+                    setCounter(0)
+                }
+            }>SetToZero</button>
+        </div>
            <div>
-               {inputValue}
+               current value: {counter}
            </div>
        </div>
     )

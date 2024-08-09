@@ -361,10 +361,153 @@ function App() {
 }
 ```
 
+ex. 2
+```
+import { useState} from "react";
+
+function App() {
+
+    //Use state declaration
+    const [inputValue,setInputValue] = useState("");
+
+    const handleInputChange = (event) => {
+
+        setInputValue(event.target.value);
+    }
+
+    return (
+       <div className="App">
+           <input type="text" onChange={handleInputChange} />
+           <div>
+               {inputValue}
+           </div>
+       </div>
+    )
+}
+
+```
+ex.3 
+```
+import { useState} from "react";
+
+function App() {
+
+    const [showText,setText] = useState(true);
+
+    return (
+       <div className="App">
+           <div>
+               <button onClick={()=> {
+                   setText(!showText);
+               }}>
+                   Click me to hide/show text
+               </button>
+           </div>
+           <div>
+               {showText && <h2>Hi there</h2>}
+           </div>
+       </div>
+    )
+}
+
+
+```
+ ex4. 
+
+```
+import { useState} from "react";
+
+function App() {
+
+    const [textColor,setTextColor] = useState("red");
+
+    return (
+       <div className="App">
+           <div>
+               <button onClick={()=> {
+                   {textColor=== "red" ? setTextColor("green"):setTextColor("red")}
+               }}>
+                   Click me to change text color
+               </button>
+           </div>
+           <div>
+                <h1 style={{color: textColor}}> Text that is changing color </h1>
+           </div>
+       </div>
+    )
+```
+
+Exercise:  
+```
+import { useState} from "react";
+
+function App() {
+
+    const [counter,setCounter] = useState(0);
+
+    const increaseCounter= () => {
+        setCounter(counter + 1);
+    }
+    const decreaseCounter= () => {
+        setCounter(counter - 1);
+    }
+
+    const resetCounter= () => {
+        setCounter(0);
+    }
 
 
 
+    return (
+       <div className="App">
+        <div style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
+            <button onClick={increaseCounter}>Increase</button>
+            <button onClick={decreaseCounter}>Decrease</button>
+            <button onClick={resetCounter}>SetToZero</button>
+        </div>
+           <div>
+               current value: {counter}
+           </div>
+       </div>
+    )
+}
 
+```
+Inline version: 
+```
+import { useState} from "react";
+
+function App() {
+
+    const [counter,setCounter] = useState(0);
+    
+
+    return (
+       <div className="App">
+        <div style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
+            <button onClick={
+                ()=>{
+                    setCounter(counter + 1);
+                }
+            }>Increase</button>
+            <button onClick={
+                ()=>{
+                    setCounter(counter - 1);
+                }
+            }>Decrease</button>
+            <button onClick={
+                ()=>{
+                    setCounter(0)
+                }
+            }>SetToZero</button>
+        </div>
+           <div>
+               current value: {counter}
+           </div>
+       </div>
+    )
+}
+```
 
 
 
