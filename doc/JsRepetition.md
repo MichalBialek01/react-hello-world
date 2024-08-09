@@ -2,6 +2,9 @@ Repetition of JS basics, basic on :
 [All The JavaScript You Need To Know For React (More JS To Know)
 ](https://www.youtube.com/watch?v=ACaT1Gfhe6I)
 
+[JavaScript Full Course for free 🌐 (2024)
+](https://www.youtube.com/watch?v=lfmg-EJ8gm4&t=40952s)
+
 ### What is DOM 
 DOM - Document Object Model
 It's a representation of webpage, that react interact with.Especial to interacting with page

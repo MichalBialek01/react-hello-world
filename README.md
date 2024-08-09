@@ -304,3 +304,65 @@ function App() {
 
 
 ```
+
+
+### Lesson 4 - UseState Hook
+
+What is state ?
+
+
+Presented approach behind the scenes increases value, but the page is loaded once, so we can't see any changes. 
+```
+function App() {
+
+    let age =0;
+
+    let increaseAge = () => {
+        age++;
+        console.log(age);
+    }
+
+
+    return (
+       <div className="App">
+           {age} <button onClick={increaseAge}>Increase Age</button>
+       </div>
+    )
+}
+```
+
+To dynamically present the value use "useState"  
+
+```
+import { useState} from "react";
+
+function App() {
+
+    const [age,setAge] = useState(0);
+
+
+    const incrementAge = () => {
+        setAge(age + 1);
+    }
+
+
+    return (
+       <div className="App">
+           {age} <button onClick={increaseAge}>Increase Age</button>
+       </div>
+    )
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
