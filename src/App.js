@@ -11,8 +11,7 @@ function App() {
     }
 
     const addTaskToList = () =>{
-        const updatedToDoList = [...toDoList,newTask];
-        setToDoList(updatedToDoList);
+        setToDoList([...toDoList,newTask]);
     }
 
 
@@ -24,8 +23,6 @@ function App() {
                <input onChange={handleInput}/>
                <button onClick={addTaskToList}>Add Task</button>
            </div>
-
-
 
            <div className="list">
                {toDoList.map((task) =>{
