@@ -1,70 +1,306 @@
-# Getting Started with Create React App
+### Sources
+https://www.youtube.com/watch?v=ETwdg4lvUUM&pp=ygUGUmVhY3Qg
+https://www.youtube.com/watch?v=5CBZ6DymX0Y&t=3691s&pp=ygULVHlwZXNjcmlweSA%3D
+https://www.youtube.com/playlist?list=PLpPqplz6dKxW5ZfERUPoYTtNUNvrEebAR
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+### Lesson 1 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. "npx create-react-app hello-world ." - creates by npm react base project
+2.   package.json - file with dependencies and info about project. For documentation purposes.
+3.   "npm start" - run localhost on port 3000 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Lesson 2
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+JSX - React rendering with UI - functions return some html code
 
-### `npm run build`
+Rendering fields in html
+```
+function App() {
+    const name = "Michal";
+    
+    return (
+        <div className="App">{name}</div>
+    );
+}
+``` 
+field as html 
+```
+import './App.css';
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+function App() {
+    const name = <h1>Michal</h1>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    return (
+        <div className="App">{name}</div>
+    );
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export default App;
 
-### `npm run eject`
+```
+Differences between raw js function and react component.
+React component returns html. IMPORTANT - must begin with capital letter 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+const getName = () => {
+    return "Michal";
+}
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const GetNameComponent = () => {
+    return <h1>Michal</h1>
+}
+```
+Calling react component 
+```
+function App() {
+    const name = <h1>Michal</h1>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    return (
+        <div className="App">
+            <Name></Name>  //or
+            <Name/>
+        </div>
+    );
+}
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+const Name = () => {
+    return <h1>Michal</h1>
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+props - elements passed to react component 
 
-### Code Splitting
+```
+import './App.css';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+function App() {
+    const name = <h1>Michal</h1>
 
-### Analyzing the Bundle Size
+    return (
+        <div className="App">
+            <Name name={"Michal"} age={21} email={"kontakt.michalbialek@gmail.com"}/>
+            <Name name={"ExampleUser"} age={22} email={"example@example.com"}/>
+        </div>
+    );
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+const Name = (props) => {
+    return (
+        <div>
+            <h1> {props.name}</h1>
+            <h1>{props.age}</h1>
+            <h1>{props.email}</h1>
+        </div>
+    )
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+export default App;
 
-### Advanced Configuration
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+###Lesson 2 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+There is possibility of use App.module.css instead of App.css
+We need to:
+1. Create file App.module.css
+2. import import stales from  "./App.module.css";
+3. When we need to use it we need to write for ex.: <div className="{styles.name}}"></div>
 
-### `npm run build` fails to minify
+Conditional rendering:
+To generate conditional rendering it is recommended to use ternary operator in curly bracket like:
+```
+<div>
+    {age >= 18 ? <h2>You are adult</h2> : <h2>You aren't adult </h2>}
+</div>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Inline styling:
+There is possibility to inline change the html view. To do it, we need to add style={{here css parameters}}
+To inject css parameters we need to use double curly braces, because we need to pass it as object.
+Example:
+```
+<h1 style={{color:"red"}} >Text</h1>
+```
+Inline styling with conditional rendering example;
+ex1:
+```
+    const age = 20;
+    <h1 style={{color: age>=18 ? "green": "red"}}></h1>
+
+```
+ex2: If statement is true, then shows code before &&, else won't show
+```
+    const isAdult = true;
+    {isAdult && <button>As an adult you can click it</button>}
+    
+```
+Iterating trough elements in array:
+We can use:
+* foeEach
+* map
+* filter
+* reduce
+
+
+example:
+```
+const names = ['Michal','Andrzej','Klaudiusz','Szymon']
+    return (
+        <div className="App">
+            <div>
+                <div>
+                    {names.map(
+                        (name,key) =>{
+                            return <h1>{name}</h1>
+                        }
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}
+```
+
+example for list of object:
+```
+
+    const users =
+        [
+            {name:"Michal",age:22},
+            {name:"Johnson",age:25},
+            {name:"Klaudiusz",age: 24}
+        ]
+    return (
+        <div className="App">
+            <div>
+                <div>
+                    {users.map(
+                        (user, key) => {
+                            return <div>{user.name} {user.age}</div>
+                        }
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+```
+
+But better option is to use react component
+
+```
+    const users =
+        [
+            {name:"Michal",age:22},
+            {name:"Johnson",age:25},
+            {name:"Klaudiusz",age: 24}
+        ]
+    return (
+        <div className="App">
+            <div>
+                <div>
+                    {users.map(
+                        (user, key) => {
+                            return
+                            <User name={user.name} age={{user.age}}/>
+                        }
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+
+    const User = (props) => {
+        return (
+            <div>
+                {props.name} {props.age}
+            </div>
+        )
+    }
+
+}
+
+```
+
+Good practise is to store certain component in separate files and use import/export 
+
+
+Exercise - display only planets that are gasPlanet:   
+```
+
+    const planets = [
+        { name: "Mars", isGasPlanet: false },
+        { name: "Earth", isGasPlanet: false },
+        { name: "Jupiter", isGasPlanet: true },
+        { name: "Venus", isGasPlanet: false },
+        { name: "Neptune", isGasPlanet: true },
+        { name: "Uranus", isGasPlanet: true }
+    ];
+
+    return (
+        <div className={App}>
+            <div>
+                {planets.map(
+                    (planet,key)=> {
+                        (planet.isGasPlanet && <Planet name={planet.name} />)
+
+                    }
+                )}
+            </div>
+
+
+        </div>
+    )
+
+    const Planet = (props) =>{
+        return  (
+            <div>
+                {props.name}
+            </div>
+        )
+    }
+
+```
+
+or more inline:
+```
+
+
+function App() {
+
+    const planets = [
+        { name: "Mars", isGasPlanet: false },
+        { name: "Earth", isGasPlanet: false },
+        { name: "Jupiter", isGasPlanet: true },
+        { name: "Venus", isGasPlanet: false },
+        { name: "Neptune", isGasPlanet: true },
+        { name: "Uranus", isGasPlanet: true }
+    ];
+
+    return (
+        <div className={App}>
+            <div>
+                {planets.map(
+                    (planet,key)=> {
+                        (planet.isGasPlanet && <h1>{planet.name}</h1>)
+
+                    }
+                )}
+            </div>
+
+
+        </div>
+    )
+
+
+```
