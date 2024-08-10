@@ -4,27 +4,27 @@ import {useState} from "react";
 
 //
 
-
 function App() {
 
-    const [name, setName] = useState("");
-    const [responseData, setResponseData    ] = useState({});
+    const [fetchedExcuse, setFetchedExcuse] = useState({});
 
-    const fetchData = () => {
-        Axios.get(`https://api.agify.io?name=${name}`)
+    const fetchExcuse = (excuse) => {
+        Axios.get(`https://excuser-three.vercel.app/v1/excuse/${excuse}/`)
             .then((response) => {
-                setResponseData(response.data);
+                setFetchedExcuse(response.data[0]);
             })
     }
 
+
     return (
         <div className="App">
-            <input placeholder="Type your name"
-                   onChange={event => setName(event.target.value)}/>
-            <button onClick={fetchData}>Predict age</button>
+            <h1>Generate An Excuse for selected situation </h1>
+            <button onClick={() => fetchExcuse("family")}>Family</button>
+            <button onClick={() => fetchExcuse("party")}>Party</button>
+            <button onClick={() => fetchExcuse("office")}>Developers</button>
 
+            <p>Your excuse: <br/>  {fetchedExcuse.excuse}</p>
 
-            <h1>Your name is : {responseData?.name} , and your predicted age equals {responseData?.age}</h1>
         </div>
     )
 
