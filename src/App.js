@@ -24,7 +24,7 @@ function App() {
             <button onClick={fetchData}>Predict age</button>
 
 
-            <h1>Your name is : {responseData.name} , and your predicted age equals {responseData.age}</h1>
+            <h1>Your name is : {responseData?.name} , and your predicted age equals {responseData?.age}</h1>
         </div>
     )
 
