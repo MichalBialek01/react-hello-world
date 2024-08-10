@@ -728,7 +728,48 @@ function App() {
 
 export default App;
 
+```
 
 
+### Lesson 8 - React Router DOM (multiple pages)
+
+To get React Router DOM we need firstly install it by npm
+
+```npm install react-router-dom```
+
+and import required things like for ex.:
 
 ```
+import {BrowserRouter as Router, Routes,Route} from "react-router-dom"; 
+
+```
+By routes we can change some fragments on page.
+
+Inside Router we provide constant page elements like footer, sidebar ect.
+Inside Routers we provide Route, that define certain pages, and link to them .
+
+Example of usage:
+```
+    return (
+        <div className="App">
+            <Router>
+                <div>
+                    <Link to={"/"}>Home </Link>
+                    <Link to={"/menu"}>Menu </Link>
+                    <Link to={"/contact"}>Contact </Link>
+                </div>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/menu" element={<Menu/>}/>
+                    <Route path="/contact" element={<Contact/>}/>
+                    <Route path="*" element={<PageNotFound/>}/>
+                </Routes>
+                <div>
+                    <footer>Created in 2024 by Me © </footer>
+                </div>
+            </Router>
+        </div>
+    )
+}
+```
+
