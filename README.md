@@ -509,15 +509,100 @@ function App() {
 }
 ```
 
-### Lesson 5 - TODO List using states with CRUD
+### Lesson 5 - TODO List using states with CRUD - Done
+
+
+### Lesson 6 - Component lifecycle and UserEffect and Strict mode
+
+Available component stages:
+1. Mounting 
+2. Updating
+3. Unmounting
+
+Example to show the stages of component - just inspect elements by interacting with page, and use build-in browser inspector
+```
+import './App.css';
+import {useState} from "react";
+
+function App() {
+    const [showText, setShowText] = useState(false);
+
+    const Text = () => {
+        const[text, setText] = useState();
+        return(
+            <div>
+                <input
+                    onChange={(event)=> {
+                        setText(event.target.value)
+                    }}
+                />
+                <h1>{text}</h1>
+            </div>
+        )
+    }
+
+    return (
+        <div className="App">
+
+            <button onClick={() => setShowText(!showText)}>Show text</button>
+            {showText && <Text/>}
+        </div>
+    )
+
+}
+
+
+export default App;
+
+
+```
+
+2. UseEffect hook - used to control the component, depending on stage on with is currently on 
+To simplify, what happens with component on certain stage
+
+Ex.1 - Defining what will happen, after mounting component and updating.
+So after every pressing button, this code will occur
+```
+    useEffect(() => {
+        console.log("COMPONENT MOUNTED");
+    }, []);
+
+```
+
+Example of use - fetching data form API immateriality after some action
+
+We can define what props or state changes, will launch useEffect, by adding square brackets like that:
+
+```
+    useEffect(() => {
+        console.log("COMPONENT MOUNTED");
+    }, [showText]);
+
+```
+
+useEffect will occur only if showText useState will change  
+
+2. Action after unmounting
+
+by returning function in useEffect, we can create action that will occur while unmounting component  
+ex. 
+```
+    useEffect(() => {
+
+        return ()=> {
+            console.log("COMPONENT UNMOUNTED")
+        }
+    }, );
+
+```
+
+example usage could be cleaning API call, after component disappear
+
+3. What's Strict mode ?
+    React checks that react rules are respected. 
+    
+With strict mode, useEffect is running twice (mounting, unmounting, and mounting) because first generation is to check code compatibility with react or errors like memory leaking.
 
 
 
-
-
-
-
-
-
-
-
+### Lesson 7 - API data fetching using Axios libary 
