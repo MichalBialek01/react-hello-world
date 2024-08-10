@@ -605,4 +605,55 @@ With strict mode, useEffect is running twice (mounting, unmounting, and mounting
 
 
 
-### Lesson 7 - API data fetching using Axios libary 
+### Lesson 7 - API data fetching using Axios library 
+
+Fetching data by build-in fetch method:
+```
+    fetch("https://catfact.ninja/fact")
+        .then((response) => {
+            response.json()
+                .then((data) => {
+                    console.log(data)
+                })
+        })
+
+```
+Fetching data by axios library:
+
+First of all we need to install axios by command: ``` npm install axios```
+Secondly add import to project ```import Axios from "axios";```
+
+```
+    Axios.get("https://catfact.ninja/fact")
+        .then((response) => {
+            console.log(response.data);
+        })
+    
+```
+
+Preferred practice is to add useState, that contains catFact, to set it as a API response. 
+It causes infinity fetching data, so it's preferred to surround it with useEffect clause, to control the behaviour.
+
+ex.
+````
+function App() {
+    const [catFact, setCatFact] = useState("");
+
+    useEffect(() => {
+        Axios.get("https://catfact.ninja/fact")
+            .then((response) => {
+                setCatFact(response.data.fact);
+            })
+    }, []);
+
+    
+    return (
+        <div className="App">
+            <p>{catFact}</p>
+        </div>
+    )
+
+}
+
+````
+This fetching data is not the best, but for present knowledge is enough.
