@@ -11,8 +11,11 @@ function App() {
             .then((response) => {
                 setCatFact(response.data.fact);
             })
-
     }
+    useEffect(() => {
+        fetchCatFact();
+    }, []);
+
 
 
     return (
