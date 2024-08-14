@@ -772,4 +772,135 @@ Example of usage:
     )
 }
 ```
+[React Router V6 
+](https://www.youtube.com/watch?v=UjHT_NKR_gU)
+
+Rest features:
+- useNavigate from react-router - it  is used to redirect to some page
+ex. 
+````
+
+import {Link, useNavigate} from "react-router-dom";
+
+export const Home = () => {
+
+
+    let navigate = useNavigate();
+
+    return(
+    <div>
+        <button onClick={()=> {
+            navigate("/contact");
+        }}>
+           Go to contact page
+        </button>
+    </div>
+    )
+}
+````
+We could also use useParams like in below example
+
+In route we need to add (:username) after const URL 
+```
+<Route path="/contact/:username" element={<Contact/>}/>
+
+```
+and 
+```
+
+import {Link, useNavigate} from "react-router-dom";
+
+export const Menu = () => {
+
+
+    let navigate = useNavigate();
+    let {username} = useNavigate();
+    return(
+        <div>
+            This is contact for {username}
+
+            <button onClick={()=> {
+                navigate("/contact");
+            }}>
+                Go to contact page
+            </button>
+        </div>
+    )
+}
+```
+
+
+### Lesson 9 - UseContext Hook
+
+Prop drilling is situation when we need to pass props element from parent to child like in ex.
+````
+const ParentComponent = () => {
+    const [state,setState] = useState();
+    return
+    (
+        <div>
+            <MiddleComponent state={state}/>
+        </div>
+    )
+}
+
+const MiddleComponent = (state) => {
+    return
+    (
+        <div>
+            <Child state={state}/>
+        </div>
+    )
+}
+
+const Child = (state) => {
+    return
+    (
+        <div>
+            <h1>{state}</h1>
+        </div>
+    )
+}
+
+````
+There is a problem, that at every component between them, we need to pass this argument. 
+To solve this problem we can use UseContext 
+That's some kind of component that holds value, and could be passed to every route
+
+
+
+
+### Lesson 10 - React query - also for fetching data from API
+(disclaimer: i feel sick, so logical level decrease a little bit)
+
+
+It is not recommended to use useEffect to fetch data.
+The best practise is use default strictMode 
+
+
+1. ``` npm install @tanstack/react-query``` in terminal
+
+We can define places where we need to use queries - we should implement that on highest level component - in this case that's App component.
+
+2. import: ``` import {QueryClient,QueryClientProvider} from "@tanstack/react-query"; ```
+
+3 .create const of QueryClient(//Here configuration)
+and surround places where we need to use queries:
+<QueryClientProvider client={client}>   //code    </QueryClientProvider>
+
+4. There are additional parameters like isLoading, isError or refetch to use with queries
+5. useQuery by default fetches data, when it you change browser tab, and return 
+To change that behaviour we can set query default setting like below:
+```
+
+    const client = new QueryClient(
+        {defaultOptions:{
+            queries:{
+                refetchOnWindowFocus: false
+            }
+            }}
+    );
+```
+
+
 
